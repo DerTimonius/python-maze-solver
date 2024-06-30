@@ -3,8 +3,8 @@ from cell import Cell
 from graphics import Window, Point, Line
 
 def main():
-    num_rows = 14
-    num_cols = 14
+    num_rows = 24
+    num_cols = 24
     margin = 50
     screen_x = 800
     screen_y = 800

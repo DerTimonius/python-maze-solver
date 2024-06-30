@@ -55,7 +55,7 @@ class Maze:
         if self._win is None:
             return
         self._win.redraw()
-        time.sleep(0.02)
+        time.sleep(0.01)
 
     def _break_entrance_and_exit(self):
         self._cells[0][0].has_top_wall = False
@@ -137,7 +137,7 @@ class Maze:
             else:
                 curr_cell.draw_move(self._cells[i][j-1], True)
         # go down
-        if  j + 1 <= self._num_rows and not curr_cell.has_bottom_wall and not self._cells[i][j + 1].visited:
+        if  j + 1 < self._num_rows and not curr_cell.has_bottom_wall and not self._cells[i][j + 1].visited:
             curr_cell.draw_move(self._cells[i][j+1]) 
             if self._solve_r(i, j +1):
                 return True
@@ -149,13 +149,13 @@ class Maze:
             if self._solve_r(i-1, j):
                 return True
             else:
-                curr_cell.draw_move(self._cells[i-1][j])
+                curr_cell.draw_move(self._cells[i-1][j], True)
 
         # go right
-        if i + 1 <= self._num_cols and not curr_cell.has_right_wall and not self._cells[i + 1][j].visited:
+        if i + 1 < self._num_cols and not curr_cell.has_right_wall and not self._cells[i + 1][j].visited:
             curr_cell.draw_move(self._cells[i+1][j])
             if self._solve_r(i+1, j):
                 return True
             else:
-                curr_cell.draw_move(self._cells[i+1][j])
+                curr_cell.draw_move(self._cells[i+1][j], True)
         return False
